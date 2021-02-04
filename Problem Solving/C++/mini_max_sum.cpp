@@ -3,8 +3,7 @@ using namespace std;
 #define int long long
 signed main()
 {
-    int arr[5], sum;
-    vector<int> arr_sum;
+    int arr[5], sum, max, min;
     for(int i=0; i<5; i++)
         cin >> arr[i];
     for(int i=0; i<5; i++)
@@ -16,8 +15,14 @@ signed main()
                 continue;
             sum += arr[j];
         }
-        arr_sum.push_back(sum);
+        if(i == 0)
+        {
+            max = sum;
+            min = sum;
+        }
+        max = (max < sum) ? sum : max;
+        min = (min > sum) ? sum : min;
     }
-    cout << *min_element(arr_sum.begin(), arr_sum.end()) << " " << *max_element(arr_sum.begin(), arr_sum.end());
+    cout << min << " " << max;
     return 0;
 }
